@@ -1,0 +1,2185 @@
+html><head><base href="." /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"><style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: #1a1a1a;
+    color: #ffffff;
+}
+
+.navbar {
+    background: #2d2d2d;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo img {
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #31A8FF;
+}
+
+.hero {
+    padding: 4rem 2rem;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(43, 16, 85, 0.9), rgba(75, 0, 130, 0.9)),
+                url('3D_Animation_Style_a_3d_rgb_cube_with_its_hands_and_mouths_and_0.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 2;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: #ffffff;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-button {
+    background: #31A8FF;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform 0.3s, background-color 0.3s;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    background: #2089e0;
+}
+
+.features {
+    padding: 4rem 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    background: #2d2d2d;
+}
+
+.feature-card {
+    background: #1a1a1a;
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+}
+
+.feature-card i {
+    font-size: 3rem;
+    color: #31A8FF;
+    margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+    margin-bottom: 1rem;
+    color: #31A8FF;
+}
+
+.feature-item h3 {
+    color: #31A8FF;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    text-align: left;
+    padding: 10px 0;
+    font-size: 1.2rem;
+}
+
+.workspace-preview {
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.workspace-container {
+    background: #2d2d2d;
+    border-radius: 10px;
+    padding: 2rem;
+    margin-top: 2rem;
+    position: relative;
+    height: 400px;
+    overflow: hidden;
+}
+
+.tools-panel {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 60px;
+    background: #1a1a1a;
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.tool-icon {
+    width: 30px;
+    height: 30px;
+    background: #333;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.tool-icon:hover {
+    background: #31A8FF;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+}
+
+.floating-element {
+    animation: float 4s ease-in-out infinite;
+}
+
+.section-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.section-content {
+    background: #2d2d2d;
+    padding: 2rem;
+    border-radius: 10px;
+    width: 95%;
+    max-width: 1400px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+.close-button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.close-button:hover {
+    color: #31A8FF;
+}
+
+.section-content h2 {
+    color: #31A8FF;
+    margin-bottom: 1.5rem;
+}
+
+.pricing-plans, .product-list, .feature-list, .tutorial-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.plan-card, .product-card, .feature-item, .tutorial-card {
+    background: #1a1a1a;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.plan-card h3, .product-card h3, .feature-item h3, .tutorial-card h3 {
+    color: #31A8FF;
+    margin-bottom: 1rem;
+}
+
+.price {
+    font-size: 2rem;
+    color: #31A8FF;
+    margin: 1rem 0;
+}
+
+.tutorial-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+
+.upload-button {
+    background: #31A8FF;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background-color 0.3s;
+    margin-top: 15px;
+}
+
+.upload-button:hover {
+    background: #2089e0;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+#intensityCanvas, #scatterCanvas, #histogramCanvas, #extractorCanvas, #contrastCanvas {
+    border: 1px solid #444;
+    width: 100%;
+    height: 800px; 
+    background: black;
+    display: block;
+}
+
+.feature-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.feature-item {
+    background: #1a1a1a;
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    position: relative;
+    width: 100% !important;
+    height: auto !important; 
+    min-height: 900px;      
+    margin-bottom: 20px !important;  
+}
+
+.feature-item p {
+    margin-bottom: 20px;  
+}
+
+.feature-item canvas {
+    margin-top: 20px;    
+}
+
+.download-button {
+    background: #31A8FF;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background-color 0.3s;
+}
+
+.download-button:hover {
+    background: #2089e0;
+}
+
+.gradient-analysis {
+    margin-top: 20px;
+    padding: 20px;
+    background: #1a1a1a;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.gradient-row {
+    height: 50px;
+    width: 100%;
+    display: flex;
+}
+
+.gradient-strip {
+    flex: 1;
+    position: relative;
+    text-align: center;
+}
+
+.gradient-info {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #fff;
+}
+
+.gradient-label {
+    background: rgba(0,0,0,0.7);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 12px;
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+
+.gradient-visualization {
+    background: #1a1a1a;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.gradient-visualization h4 {
+    color: #31A8FF;
+    margin-bottom: 15px;
+}
+
+.gradient-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.gradient-row {
+    height: 40px;
+    border-radius: 4px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.gradient-row span {
+    background: rgba(0,0,0,0.7);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 12px;
+    color: white;
+}
+
+.histogram-container {
+    background: #1a1a1a;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+/* Update canvas styles */
+#histogramCanvas, #intensityCanvas, #scatterCanvas, #extractorCanvas, #contrastCanvas {
+    width: 100%;
+    height: 800px; 
+    margin: 20px auto;
+    display: block;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.process-button {
+    background: #31A8FF;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background-color 0.3s;
+    margin-left: 10px;
+}
+
+.process-button:hover {
+    background: #2089e0;
+}
+
+#ia .feature-item canvas {
+    background: #1a1a1a;
+    border: 1px solid #444;
+    margin: 20px 0;
+}
+
+#ia .feature-item h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Add cursor styles */
+.color-picker-active {
+    cursor: crosshair !important;
+}
+
+/* Add styles for color info tooltip */
+.color-info {
+    position: absolute;
+    background: rgba(0,0,0,0.9);
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    pointer-events: none;
+    z-index: 1000;
+    font-size: 14px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* Style for picked colors panel */
+.picked-colors {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    background: rgba(0,0,0,0.8);
+    padding: 10px;
+    border-radius: 5px;
+    max-height: 80vh;
+    overflow-y: auto;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* Add these styles */
+.axis-label {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    pointer-events: none;
+}
+
+#scatterCanvas {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.feature-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    overflow: hidden;
+}
+</style>
+<script>
+    function createColorBox(r, g, b) {
+        return `<div style="width: 30px; height: 30px; background: rgb(${r},${g},${b}); 
+                            border: 1px solid white; margin: 10px auto;"></div>`;
+    }
+
+    function resetIntensityGraph() {
+        const canvas = document.getElementById('intensityCanvas');
+        if (!canvas) return;
+        
+        const ctx = canvas.getContext('2d');
+        
+        // Clear the entire canvas
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = 'black';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Remove any existing legend
+        const existingLegend = canvas.parentElement.querySelector('.intensity-legend');
+        if (existingLegend) {
+            existingLegend.remove();
+        }
+    }
+
+    function setupImageInput(inputId, callback) {
+        const input = document.getElementById(inputId);
+        if (!input) {
+            console.warn(`Input element with id ${inputId} not found`);
+            return;
+        }
+
+        input.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            // Reset before loading new image
+            if (inputId === 'colorSpaceImageInput') {
+                resetIntensityGraph();
+            }
+
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const img = new Image();
+                img.onload = function() {
+                    callback(img);
+                };
+                img.src = event.target.result;
+            };
+            reader.readAsDataURL(file);
+        });
+    }
+
+    function createIntensityGraph(imageData) {
+        const canvas = document.getElementById('intensityCanvas');
+        const ctx = canvas.getContext('2d');
+        const width = canvas.width;
+        const height = canvas.height;
+
+        // Clear canvas and reset before drawing new graph
+        resetIntensityGraph();
+
+        // Calculate histogram
+        const hist = new Array(256).fill(0);
+        let maxCount = 0;
+        let maxIntensity = 0;
+        
+        // Calculate grayscale values and histogram
+        for (let i = 0; i < imageData.data.length; i += 4) {
+            const r = imageData.data[i];
+            const g = imageData.data[i + 1];
+            const b = imageData.data[i + 2];
+            const gray = Math.floor((r + g + b) / 3);
+            hist[gray]++;
+            
+            if (hist[gray] > maxCount) {
+                maxCount = hist[gray];
+                maxIntensity = gray;
+            }
+        }
+
+        // Set up graph dimensions with fixed maxCount of 15000
+        const padding = 50;
+        const graphWidth = width - (padding * 2);
+        const graphHeight = height - (padding * 2);
+        const maxYValue = 15000; // Set fixed maximum y value
+
+        // Draw axes
+        ctx.strokeStyle = 'white';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(padding, height - padding);
+        ctx.lineTo(width - padding, height - padding); // X axis
+        ctx.moveTo(padding, height - padding);
+        ctx.lineTo(padding, padding); // Y axis
+        ctx.stroke();
+
+        // Add labels
+        ctx.fillStyle = 'white';
+        ctx.font = '14px Arial';
+        ctx.textAlign = 'center';
+        
+        // X-axis label
+        ctx.fillText('intensidad de iluminacion', width / 2, height - 10);
+        
+        // Y-axis label (rotated)
+        ctx.save();
+        ctx.translate(15, height / 2);
+        ctx.rotate(-Math.PI / 2);
+        ctx.fillText('cantidad de pixeles', 0, 0);
+        ctx.restore();
+
+        // Draw grid lines
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+        ctx.lineWidth = 1;
+
+        // Vertical grid lines
+        for (let i = 0; i <= 256; i += 32) {
+            const x = padding + (i * graphWidth / 256);
+            ctx.beginPath();
+            ctx.moveTo(x, padding);
+            ctx.lineTo(x, height - padding);
+            ctx.stroke();
+            ctx.fillText(i.toString(), x, height - padding + 20);
+        }
+
+        // Horizontal grid lines with fixed max value of 15000
+        const yStep = maxYValue / 8;
+        for (let i = 0; i <= 8; i++) {
+            const y = padding + (i * graphHeight / 8);
+            ctx.beginPath();
+            ctx.moveTo(padding, y);
+            ctx.lineTo(width - padding, y);
+            ctx.stroke();
+            ctx.textAlign = 'right';
+            ctx.fillText(Math.round(maxYValue - (i * yStep)).toString(), padding - 10, y + 5);
+        }
+
+        // Plot histogram
+        ctx.beginPath();
+        ctx.strokeStyle = 'gray';
+        ctx.lineWidth = 2;
+
+        for (let i = 0; i < 256; i++) {
+            const x = padding + (i * graphWidth / 256);
+            const y = height - padding - (hist[i] * graphHeight / maxYValue);
+            
+            if (i === 0) {
+                ctx.moveTo(x, y);
+            } else {
+                ctx.lineTo(x, y);
+            }
+        }
+        ctx.stroke();
+
+        // Draw predominant point marker
+        const pointX = padding + (maxIntensity * graphWidth / 256);
+        const pointY = height - padding - (hist[maxIntensity] * graphHeight / maxYValue);
+        
+        // Draw point
+        ctx.beginPath();
+        ctx.arc(pointX, pointY, 6, 0, Math.PI * 2);
+        ctx.fillStyle = `rgb(${maxIntensity}, ${maxIntensity}, ${maxIntensity})`;
+        ctx.fill();
+        ctx.strokeStyle = 'white';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        // Add legend
+        const legend = document.createElement('div');
+        legend.className = 'intensity-legend';
+        legend.style.position = 'absolute';
+        legend.style.top = '20px';
+        legend.style.right = '20px';
+        legend.style.background = 'rgba(0,0,0,0.8)';
+        legend.style.padding = '15px';
+        legend.style.borderRadius = '5px';
+        legend.style.color = 'white';
+        legend.style.border = '1px solid white';
+        legend.style.zIndex = '100';
+        
+        legend.innerHTML = `
+            <div style="font-weight: bold; margin-bottom: 10px;">Valor Predominante</div>
+            <div>Intensidad: ${maxIntensity}</div>
+            <div>RGB: (${maxIntensity}, ${maxIntensity}, ${maxIntensity})</div>
+            <div style="margin-top: 10px;">
+                <div style="width: 30px; height: 30px; background: rgb(${maxIntensity},${maxIntensity},${maxIntensity}); 
+                            border: 1px solid white; margin: 0 auto;"></div>
+            </div>
+            <div style="margin-top: 5px;">Cantidad de píxeles: ${Math.round(hist[maxIntensity])}</div>
+        `;
+
+        canvas.parentElement.style.position = 'relative';
+        canvas.parentElement.appendChild(legend);
+    }
+
+    function createHistogram(imageData) {
+        const canvas = document.getElementById('histogramCanvas');
+        const ctx = canvas.getContext('2d');
+        const width = canvas.width;
+        const height = canvas.height;
+
+        // Clear canvas
+        ctx.fillStyle = 'black';
+        ctx.fillRect(0, 0, width, height);
+
+        // Remove existing legend if any
+        const existingLegend = canvas.parentElement.querySelector('.histogram-legend');
+        if (existingLegend) {
+            existingLegend.remove();
+        }
+
+        // Calculate histogram for RGB channels
+        const rHist = new Array(256).fill(0);
+        const gHist = new Array(256).fill(0);
+        const bHist = new Array(256).fill(0);
+        
+        // Calculate histograms and find peaks
+        let maxCount = 0;
+        let rPeak = 0, gPeak = 0, bPeak = 0;
+        let rMaxVal = 0, gMaxVal = 0, bMaxVal = 0;
+
+        for (let i = 0; i < imageData.data.length; i += 4) {
+            const r = imageData.data[i];
+            const g = imageData.data[i + 1];
+            const b = imageData.data[i + 2];
+            
+            rHist[r]++;
+            gHist[g]++;
+            bHist[b]++;
+            
+            if (rHist[r] > rMaxVal) {
+                rMaxVal = rHist[r];
+                rPeak = r;
+            }
+            if (gHist[g] > gMaxVal) {
+                gMaxVal = gHist[g];
+                gPeak = g;
+            }
+            if (bHist[b] > bMaxVal) {
+                bMaxVal = bHist[b];
+                bPeak = b;
+            }
+            
+            maxCount = Math.max(maxCount, rHist[r], gHist[g], bHist[b]);
+        }
+
+        // Set up graph dimensions with padding
+        const padding = 50;
+        const graphWidth = width - (padding * 2);
+        const graphHeight = height - (padding * 2);
+        const maxYValue = 15000; // Fixed maximum y value
+
+        // Draw axes
+        ctx.strokeStyle = 'white';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(padding, height - padding);
+        ctx.lineTo(width - padding, height - padding); // X axis
+        ctx.moveTo(padding, height - padding);
+        ctx.lineTo(padding, padding); // Y axis
+        ctx.stroke();
+
+        // Add labels
+        ctx.fillStyle = 'white';
+        ctx.font = '14px Arial';
+        ctx.textAlign = 'center';
+        
+        // X-axis label
+        ctx.fillText('Valor RGB', width / 2, height - 10);
+        
+        // Y-axis label (rotated)
+        ctx.save();
+        ctx.translate(15, height / 2);
+        ctx.rotate(-Math.PI / 2);
+        ctx.fillText('Frecuencia', 0, 0);
+        ctx.restore();
+
+        // Draw grid lines
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+        ctx.lineWidth = 1;
+
+        // Vertical grid lines
+        for (let i = 0; i <= 256; i += 32) {
+            const x = padding + (i * graphWidth / 256);
+            ctx.beginPath();
+            ctx.moveTo(x, padding);
+            ctx.lineTo(x, height - padding);
+            ctx.stroke();
+            ctx.fillText(i.toString(), x, height - padding + 20);
+        }
+
+        // Horizontal grid lines
+        const yStep = maxYValue / 8;
+        for (let i = 0; i <= 8; i++) {
+            const y = padding + (i * graphHeight / 8);
+            ctx.beginPath();
+            ctx.moveTo(padding, y);
+            ctx.lineTo(width - padding, y);
+            ctx.stroke();
+            ctx.textAlign = 'right';
+            ctx.fillText(Math.round(maxYValue - (i * yStep)).toString(), padding - 10, y + 5);
+        }
+
+        // Draw histograms
+        function drawChannel(hist, color) {
+            ctx.beginPath();
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 2;
+
+            for (let i = 0; i < 256; i++) {
+                const x = padding + (i * graphWidth / 256);
+                const y = height - padding - (hist[i] * graphHeight / maxYValue);
+                
+                if (i === 0) {
+                    ctx.moveTo(x, y);
+                } else {
+                    ctx.lineTo(x, y);
+                }
+            }
+            ctx.stroke();
+        }
+
+        // Draw each channel
+        drawChannel(rHist, 'red');
+        drawChannel(gHist, 'green');
+        drawChannel(bHist, 'blue');
+
+        // Draw peak points
+        function drawPeak(value, count, color) {
+            const x = padding + (value * graphWidth / 256);
+            const y = height - padding - (count * graphHeight / maxYValue);
+            ctx.beginPath();
+            ctx.arc(x, y, 6, 0, Math.PI * 2);
+            ctx.fillStyle = color;
+            ctx.fill();
+            ctx.strokeStyle = 'white';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+        }
+
+        drawPeak(rPeak, rHist[rPeak], 'red');
+        drawPeak(gPeak, gHist[gPeak], 'green');
+        drawPeak(bPeak, bHist[bPeak], 'blue');
+
+        // Create and add legend
+        const legend = document.createElement('div');
+        legend.className = 'histogram-legend';
+        legend.style.position = 'absolute';
+        legend.style.top = '20px';
+        legend.style.right = '20px';
+        legend.style.background = 'rgba(0,0,0,0.8)';
+        legend.style.padding = '15px';
+        legend.style.borderRadius = '5px';
+        legend.style.color = 'white';
+        legend.style.border = '1px solid white';
+        legend.style.zIndex = '100';
+        
+        legend.innerHTML = `
+            <div style="font-weight: bold; margin-bottom: 10px;">Valores Predominantes</div>
+            <div style="margin-bottom: 10px;">
+                <div>Rojo: ${rPeak}</div>
+                <div>RGB: (${rPeak}, 0, 0)</div>
+                <div style="width: 30px; height: 30px; background: rgb(${rPeak},0,0); 
+                            border: 1px solid white; margin: 5px 0;"></div>
+                <div>Cantidad: ${Math.round(rHist[rPeak])}</div>
+            </div>
+            <div style="margin-bottom: 10px;">
+                <div>Verde: ${gPeak}</div>
+                <div>RGB: (0, ${gPeak}, 0)</div>
+                <div style="width: 30px; height: 30px; background: rgb(0,${gPeak},0); 
+                            border: 1px solid white; margin: 5px 0;"></div>
+                <div>Cantidad: ${Math.round(gHist[gPeak])}</div>
+            </div>
+            <div style="margin-bottom: 10px;">
+                <div>Azul: ${bPeak}</div>
+                <div>RGB: (0, 0, ${bPeak})</div>
+                <div style="width: 30px; height: 30px; background: rgb(0,0,${bPeak}); 
+                            border: 1px solid white; margin: 5px 0;"></div>
+                <div>Cantidad: ${Math.round(bHist[bPeak])}</div>
+            </div>
+            <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.3);">
+                <div>Color Combinado:</div>
+                <div>RGB: (${rPeak}, ${gPeak}, ${bPeak})</div>
+                <div style="width: 30px; height: 30px; background: rgb(${rPeak},${gPeak},${bPeak}); 
+                            border: 1px solid white; margin: 5px 0;"></div>
+            </div>
+        `;
+
+        canvas.parentElement.style.position = 'relative';
+        canvas.parentElement.appendChild(legend);
+    }
+
+    function createBrightnessAnalysis(img) {
+        const canvas = document.getElementById('contrastCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Clear canvas
+        ctx.fillStyle = 'black';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        // Draw the image on a temporary canvas to get pixel data
+        const tempCanvas = document.createElement('canvas');
+        const tempCtx = tempCanvas.getContext('2d');
+        tempCanvas.width = img.width;
+        tempCanvas.height = img.height;
+        tempCtx.drawImage(img, 0, 0);
+        const imageData = tempCtx.getImageData(0, 0, tempCanvas.width, tempCanvas.height);
+        const data = imageData.data;
+        
+        // Calculate brightness values and average
+        const brightnessValues = [];
+        let totalBrightness = 0;
+        for (let i = 0; i < data.length; i += 4) {
+            const r = data[i];
+            const g = data[i + 1];
+            const b = data[i + 2];
+            const brightness = Math.round(0.299 * r + 0.587 * g + 0.114 * b);
+            brightnessValues.push(brightness);
+            totalBrightness += brightness;
+        }
+        
+        const averageBrightness = totalBrightness / brightnessValues.length;
+        
+        // Set up graph dimensions
+        const padding = 50;
+        const graphWidth = canvas.width - (padding * 2);
+        const graphHeight = canvas.height - (padding * 2);
+        
+        // Draw axes
+        ctx.strokeStyle = 'white';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(padding, canvas.height - padding);
+        ctx.lineTo(canvas.width - padding, canvas.height - padding); // X axis
+        ctx.moveTo(padding, canvas.height - padding);
+        ctx.lineTo(padding, padding); // Y axis
+        ctx.stroke();
+        
+        // Add labels
+        ctx.fillStyle = 'white';
+        ctx.font = '14px Arial';
+        ctx.textAlign = 'center';
+        
+        // X-axis label
+        ctx.fillText('Nivel de Brillo', canvas.width / 2, canvas.height - 10);
+        
+        // Y-axis label (rotated)
+        ctx.save();
+        ctx.translate(15, canvas.height / 2);
+        ctx.rotate(-Math.PI / 2);
+        ctx.fillText('Frecuencia', 0, 0);
+        ctx.restore();
+        
+        // Calculate histogram
+        const histogram = new Array(256).fill(0);
+        brightnessValues.forEach(value => histogram[value]++);
+        
+        // Find max frequency for scaling
+        const maxFreq = Math.max(...histogram);
+        
+        // Draw grid lines and values
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+        ctx.lineWidth = 1;
+        
+        // Horizontal grid lines
+        for (let i = 0; i <= 10; i++) {
+            const y = padding + (i * graphHeight / 10);
+            ctx.beginPath();
+            ctx.moveTo(padding, y);
+            ctx.lineTo(canvas.width - padding, y);
+            ctx.stroke();
+            
+            ctx.fillStyle = 'white';
+            ctx.textAlign = 'right';
+            ctx.fillText(Math.round((1 - i/10) * maxFreq), padding - 10, y + 5);
+        }
+        
+        // Vertical grid lines
+        for (let i = 0; i <= 256; i += 32) {
+            const x = padding + (i * graphWidth / 256);
+            ctx.beginPath();
+            ctx.moveTo(x, padding);
+            ctx.lineTo(x, canvas.height - padding);
+            ctx.stroke();
+            
+            ctx.fillStyle = 'white';
+            ctx.textAlign = 'center';
+            ctx.fillText(i, x, canvas.height - padding + 20);
+        }
+        
+        // Draw histogram
+        ctx.beginPath();
+        ctx.moveTo(padding, canvas.height - padding);
+        for (let i = 0; i < 256; i++) {
+            const x = padding + (i * graphWidth / 256);
+            const barHeight = (histogram[i] / maxFreq) * graphHeight;
+            const y = canvas.height - padding - barHeight;
+            
+            if (i === 0) {
+                ctx.moveTo(x, y);
+            } else {
+                ctx.lineTo(x, y);
+            }
+        }
+        ctx.strokeStyle = '#31A8FF';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+        
+        // Draw average brightness line in red
+        ctx.beginPath();
+        const avgX = padding + (averageBrightness * graphWidth / 256);
+        ctx.moveTo(avgX, padding);
+        ctx.lineTo(avgX, canvas.height - padding);
+        ctx.strokeStyle = 'red';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+        
+        // Add label for average line
+        ctx.fillStyle = 'red';
+        ctx.textAlign = 'left';
+        ctx.fillText(`Brillo Promedio: ${Math.round(averageBrightness)}`, avgX + 5, padding + 20);
+    }
+
+    function setupContrastInput() {
+        const input = document.getElementById('contrastImageInput');
+        if (!input) return;
+        
+        input.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const img = new Image();
+                img.onload = function() {
+                    createBrightnessAnalysis(img);
+                };
+                img.src = event.target.result;
+            };
+            reader.readAsDataURL(file);
+        });
+    }
+
+    function downloadHistogram(imageData) {
+        const canvas = document.getElementById('histogramCanvas');
+        const ctx = canvas.getContext('2d');
+        const width = canvas.width;
+        const height = canvas.height;
+
+        // Clear canvas
+        ctx.fillStyle = 'black';
+        ctx.fillRect(0, 0, width, height);
+
+        // Remove existing legend if any
+        const existingLegend = canvas.parentElement.querySelector('.histogram-legend');
+        if (existingLegend) {
+            existingLegend.remove();
+        }
+
+        // Calculate histogram for RGB channels
+        const rHist = new Array(256).fill(0);
+        const gHist = new Array(256).fill(0);
+        const bHist = new Array(256).fill(0);
+        
+        // Calculate histograms and find peaks
+        let maxCount = 0;
+        let rPeak = 0, gPeak = 0, bPeak = 0;
+        let rMaxVal = 0, gMaxVal = 0, bMaxVal = 0;
+
+        for (let i = 0; i < imageData.data.length; i += 4) {
+            const r = imageData.data[i];
+            const g = imageData.data[i + 1];
+            const b = imageData.data[i + 2];
+            
+            rHist[r]++;
+            gHist[g]++;
+            bHist[b]++;
+            
+            if (rHist[r] > rMaxVal) {
+                rMaxVal = rHist[r];
+                rPeak = r;
+            }
+            if (gHist[g] > gMaxVal) {
+                gMaxVal = gHist[g];
+                gPeak = g;
+            }
+            if (bHist[b] > bMaxVal) {
+                bMaxVal = bHist[b];
+                bPeak = b;
+            }
+            
+            maxCount = Math.max(maxCount, rHist[r], gHist[g], bHist[b]);
+        }
+
+        // Set up graph dimensions with padding
+        const padding = 50;
+        const graphWidth = width - (padding * 2);
+        const graphHeight = height - (padding * 2);
+        const maxYValue = 15000; // Fixed maximum y value
+
+        // Draw axes
+        ctx.strokeStyle = 'white';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(padding, height - padding);
+        ctx.lineTo(width - padding, height - padding); // X axis
+        ctx.moveTo(padding, height - padding);
+        ctx.lineTo(padding, padding); // Y axis
+        ctx.stroke();
+
+        // Add labels
+        ctx.fillStyle = 'white';
+        ctx.font = '14px Arial';
+        ctx.textAlign = 'center';
+        
+        // X-axis label
+        ctx.fillText('Valor RGB', width / 2, height - 10);
+        
+        // Y-axis label (rotated)
+        ctx.save();
+        ctx.translate(15, height / 2);
+        ctx.rotate(-Math.PI / 2);
+        ctx.fillText('Frecuencia', 0, 0);
+        ctx.restore();
+
+        // Draw grid lines
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+        ctx.lineWidth = 1;
+
+        // Vertical grid lines
+        for (let i = 0; i <= 256; i += 32) {
+            const x = padding + (i * graphWidth / 256);
+            ctx.beginPath();
+            ctx.moveTo(x, padding);
+            ctx.lineTo(x, height - padding);
+            ctx.stroke();
+            ctx.fillText(i.toString(), x, height - padding + 20);
+        }
+
+        // Horizontal grid lines
+        const yStep = maxYValue / 8;
+        for (let i = 0; i <= 8; i++) {
+            const y = padding + (i * graphHeight / 8);
+            ctx.beginPath();
+            ctx.moveTo(padding, y);
+            ctx.lineTo(width - padding, y);
+            ctx.stroke();
+            ctx.textAlign = 'right';
+            ctx.fillText(Math.round(maxYValue - (i * yStep)).toString(), padding - 10, y + 5);
+        }
+
+        // Draw histograms
+        function drawChannel(hist, color) {
+            ctx.beginPath();
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 2;
+
+            for (let i = 0; i < 256; i++) {
+                const x = padding + (i * graphWidth / 256);
+                const y = height - padding - (hist[i] * graphHeight / maxYValue);
+                
+                if (i === 0) {
+                    ctx.moveTo(x, y);
+                } else {
+                    ctx.lineTo(x, y);
+                }
+            }
+            ctx.stroke();
+        }
+
+        // Draw each channel
+        drawChannel(rHist, 'red');
+        drawChannel(gHist, 'green');
+        drawChannel(bHist, 'blue');
+
+        // Draw peak points
+        function drawPeak(value, count, color) {
+            const x = padding + (value * graphWidth / 256);
+            const y = height - padding - (count * graphHeight / maxYValue);
+            ctx.beginPath();
+            ctx.arc(x, y, 6, 0, Math.PI * 2);
+            ctx.fillStyle = color;
+            ctx.fill();
+            ctx.strokeStyle = 'white';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+        }
+
+        drawPeak(rPeak, rHist[rPeak], 'red');
+        drawPeak(gPeak, gHist[gPeak], 'green');
+        drawPeak(bPeak, bHist[bPeak], 'blue');
+
+        // Create and add legend
+        const legend = document.createElement('div');
+        legend.className = 'histogram-legend';
+        legend.style.position = 'absolute';
+        legend.style.top = '20px';
+        legend.style.right = '20px';
+        legend.style.background = 'rgba(0,0,0,0.8)';
+        legend.style.padding = '15px';
+        legend.style.borderRadius = '5px';
+        legend.style.color = 'white';
+        legend.style.border = '1px solid white';
+        legend.style.zIndex = '100';
+        
+        legend.innerHTML = `
+            <div style="font-weight: bold; margin-bottom: 10px;">Valores Predominantes</div>
+            <div style="margin-bottom: 10px;">
+                <div>Rojo: ${rPeak}</div>
+                <div>RGB: (${rPeak}, 0, 0)</div>
+                <div style="width: 30px; height: 30px; background: rgb(${rPeak},0,0); 
+                            border: 1px solid white; margin: 5px 0;"></div>
+                <div>Cantidad: ${Math.round(rHist[rPeak])}</div>
+            </div>
+            <div style="margin-bottom: 10px;">
+                <div>Verde: ${gPeak}</div>
+                <div>RGB: (0, ${gPeak}, 0)</div>
+                <div style="width: 30px; height: 30px; background: rgb(0,${gPeak},0); 
+                            border: 1px solid white; margin: 5px 0;"></div>
+                <div>Cantidad: ${Math.round(gHist[gPeak])}</div>
+            </div>
+            <div style="margin-bottom: 10px;">
+                <div>Azul: ${bPeak}</div>
+                <div>RGB: (0, 0, ${bPeak})</div>
+                <div style="width: 30px; height: 30px; background: rgb(0,0,${bPeak}); 
+                            border: 1px solid white; margin: 5px 0;"></div>
+                <div>Cantidad: ${Math.round(bHist[bPeak])}</div>
+            </div>
+            <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.3);">
+                <div>Color Combinado:</div>
+                <div>RGB: (${rPeak}, ${gPeak}, ${bPeak})</div>
+                <div style="width: 30px; height: 30px; background: rgb(${rPeak},${gPeak},${bPeak}); 
+                            border: 1px solid white; margin: 5px 0;"></div>
+            </div>
+        `;
+
+        canvas.parentElement.style.position = 'relative';
+        canvas.parentElement.appendChild(legend);
+    }
+
+    function setupContrastInput() {
+        const input = document.getElementById('contrastImageInput');
+        if (!input) return;
+        
+        input.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const img = new Image();
+                img.onload = function() {
+                    createBrightnessAnalysis(img);
+                };
+                img.src = event.target.result;
+            };
+            reader.readAsDataURL(file);
+        });
+    }
+
+    function downloadHistogram(imageData) {
+        const canvas = document.getElementById('histogramCanvas');
+        const ctx = canvas.getContext('2d');
+        const width = canvas.width;
+        const height = canvas.height;
+
+        // Clear canvas
+        ctx.fillStyle = 'black';
+        ctx.fillRect(0, 0, width, height);
+
+        // Remove existing legend if any
+        const existingLegend = canvas.parentElement.querySelector('.histogram-legend');
+        if (existingLegend) {
+            existingLegend.remove();
+        }
+
+        // Calculate histogram for RGB channels
+        const rHist = new Array(256).fill(0);
+        const gHist = new Array(256).fill(0);
+        const bHist = new Array(256).fill(0);
+        
+        // Calculate histograms and find peaks
+        let maxCount = 0;
+        let rPeak = 0, gPeak = 0, bPeak = 0;
+        let rMaxVal = 0, gMaxVal = 0, bMaxVal = 0;
+
+        for (let i = 0; i < imageData.data.length; i += 4) {
+            const r = imageData.data[i];
+            const g = imageData.data[i + 1];
+            const b = imageData.data[i + 2];
+            
+            rHist[r]++;
+            gHist[g]++;
+            bHist[b]++;
+            
+            if (rHist[r] > rMaxVal) {
+                rMaxVal = rHist[r];
+                rPeak = r;
+            }
+            if (gHist[g] > gMaxVal) {
+                gMaxVal = gHist[g];
+                gPeak = g;
+            }
+            if (bHist[b] > bMaxVal) {
+                bMaxVal = bHist[b];
+                bPeak = b;
+            }
+            
+            maxCount = Math.max(maxCount, rHist[r], gHist[g], bHist[b]);
+        }
+
+        // Set up graph dimensions with padding
+        const padding = 50;
+        const graphWidth = width - (padding * 2);
+        const graphHeight = height - (padding * 2);
+        const maxYValue = 15000; // Fixed maximum y value
+
+        // Draw axes
+        ctx.strokeStyle = 'white';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(padding, height - padding);
+        ctx.lineTo(width - padding, height - padding); // X axis
+        ctx.moveTo(padding, height - padding);
+        ctx.lineTo(padding, padding); // Y axis
+        ctx.stroke();
+
+        // Add labels
+        ctx.fillStyle = 'white';
+        ctx.font = '14px Arial';
+        ctx.textAlign = 'center';
+        
+        // X-axis label
+        ctx.fillText('Valor RGB', width / 2, height - 10);
+        
+        // Y-axis label (rotated)
+        ctx.save();
+        ctx.translate(15, height / 2);
+        ctx.rotate(-Math.PI / 2);
+        ctx.fillText('Frecuencia', 0, 0);
+        ctx.restore();
+
+        // Draw grid lines
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+        ctx.lineWidth = 1;
+
+        // Vertical grid lines
+        for (let i = 0; i <= 256; i += 32) {
+            const x = padding + (i * graphWidth / 256);
+            ctx.beginPath();
+            ctx.moveTo(x, padding);
+            ctx.lineTo(x, height - padding);
+            ctx.stroke();
+            ctx.fillText(i.toString(), x, height - padding + 20);
+        }
+
+        // Horizontal grid lines
+        const yStep = maxYValue / 8;
+        for (let i = 0; i <= 8; i++) {
+            const y = padding + (i * graphHeight / 8);
+            ctx.beginPath();
+            ctx.moveTo(padding, y);
+            ctx.lineTo(width - padding, y);
+            ctx.stroke();
+            ctx.textAlign = 'right';
+            ctx.fillText(Math.round(maxYValue - (i * yStep)).toString(), padding - 10, y + 5);
+        }
+
+        // Draw histograms
+        function drawChannel(hist, color) {
+            ctx.beginPath();
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 2;
+
+            for (let i = 0; i < 256; i++) {
+                const x = padding + (i * graphWidth / 256);
+                const y = height - padding - (hist[i] * graphHeight / maxYValue);
+                
+                if (i === 0) {
+                    ctx.moveTo(x, y);
+                } else {
+                    ctx.lineTo(x, y);
+                }
+            }
+            ctx.stroke();
+        }
+
+        // Draw each channel
+        drawChannel(rHist, 'red');
+        drawChannel(gHist, 'green');
+        drawChannel(bHist, 'blue');
+
+        // Draw peak points
+        function drawPeak(value, count, color) {
+            const x = padding + (value * graphWidth / 256);
+            const y = height - padding - (count * graphHeight / maxYValue);
+            ctx.beginPath();
+            ctx.arc(x, y, 6, 0, Math.PI * 2);
+            ctx.fillStyle = color;
+            ctx.fill();
+            ctx.strokeStyle = 'white';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+        }
+
+        drawPeak(rPeak, rHist[rPeak], 'red');
+        drawPeak(gPeak, gHist[gPeak], 'green');
+        drawPeak(bPeak, bHist[bPeak], 'blue');
+
+        // Create and add legend
+        const legend = document.createElement('div');
+        legend.className = 'histogram-legend';
+        legend.style.position = 'absolute';
+        legend.style.top = '20px';
+        legend.style.right = '20px';
+        legend.style.background = 'rgba(0,0,0,0.8)';
+        legend.style.padding = '15px';
+        legend.style.borderRadius = '5px';
+        legend.style.color = 'white';
+        legend.style.border = '1px solid white';
+        legend.style.zIndex = '100';
+        
+        legend.innerHTML = `
+            <div style="font-weight: bold; margin-bottom: 10px;">Valores Predominantes</div>
+            <div style="margin-bottom: 10px;">
+                <div>Rojo: ${rPeak}</div>
+                <div>RGB: (${rPeak}, 0, 0)</div>
+                <div style="width: 30px; height: 30px; background: rgb(${rPeak},0,0); 
+                            border: 1px solid white; margin: 5px 0;"></div>
+                <div>Cantidad: ${Math.round(rHist[rPeak])}</div>
+            </div>
+            <div style="margin-bottom: 10px;">
+                <div>Verde: ${gPeak}</div>
+                <div>RGB: (0, ${gPeak}, 0)</div>
+                <div style="width: 30px; height: 30px; background: rgb(0,${gPeak},0); 
+                            border: 1px solid white; margin: 5px 0;"></div>
+                <div>Cantidad: ${Math.round(gHist[gPeak])}</div>
+            </div>
+            <div style="margin-bottom: 10px;">
+                <div>Azul: ${bPeak}</div>
+                <div>RGB: (0, 0, ${bPeak})</div>
+                <div style="width: 30px; height: 30px; background: rgb(0,0,${bPeak}); 
+                            border: 1px solid white; margin: 5px 0;"></div>
+                <div>Cantidad: ${Math.round(bHist[bPeak])}</div>
+            </div>
+            <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.3);">
+                <div>Color Combinado:</div>
+                <div>RGB: (${rPeak}, ${gPeak}, ${bPeak})</div>
+                <div style="width: 30px; height: 30px; background: rgb(${rPeak},${gPeak},${bPeak}); 
+                            border: 1px solid white; margin: 5px 0;"></div>
+            </div>
+        `;
+
+        canvas.parentElement.style.position = 'relative';
+        canvas.parentElement.appendChild(legend);
+    }
+
+    function setupColorExtractor() {
+        const canvas = document.getElementById('extractorCanvas');
+        const ctx = canvas.getContext('2d');
+        let isPickingColor = false;
+        let pickedColors = [];
+        
+        // Create picked colors panel
+        const pickedColorsPanel = document.createElement('div');
+        pickedColorsPanel.className = 'picked-colors';
+        canvas.parentElement.appendChild(pickedColorsPanel);
+        
+        // Create color info tooltip
+        const colorInfo = document.createElement('div');
+        colorInfo.className = 'color-info';
+        colorInfo.style.display = 'none';
+        canvas.parentElement.appendChild(colorInfo);
+
+        function toggleColorPicker() {
+            isPickingColor = !isPickingColor;
+            canvas.classList.toggle('color-picker-active');
+        }
+
+        function getColorAtPoint(x, y) {
+            const pixel = ctx.getImageData(x, y, 1, 1);
+            const data = pixel.data;
+            return {
+                r: data[0],
+                g: data[1],
+                b: data[2]
+            };
+        }
+
+        function updateColorInfo(x, y) {
+            const color = getColorAtPoint(x, y);
+            const hex = rgbToHex(color.r, color.g, color.b);
+            colorInfo.innerHTML = `
+                RGB: ${color.r}, ${color.g}, ${color.b}<br>
+                HEX: ${hex}
+                <div style="width: 20px; height: 20px; background: rgb(${color.r},${color.g},${color.b}); 
+                            margin: 5px auto; border: 1px solid white;"></div>
+            `;
+            colorInfo.style.left = (x + 20) + 'px';
+            colorInfo.style.top = (y + 20) + 'px';
+        }
+
+        function rgbToHex(r, g, b) {
+            return '#' + [r, g, b].map(x => {
+                const hex = x.toString(16);
+                return hex.length === 1 ? '0' + hex : hex;
+            }).join('');
+        }
+
+        // Add color picker button
+        const pickerButton = document.createElement('button');
+        pickerButton.className = 'process-button';
+        pickerButton.innerHTML = '<i class="fas fa-eye-dropper"></i> Activar Selector';
+        pickerButton.style.marginLeft = '10px';
+        canvas.parentElement.querySelector('.button-group').appendChild(pickerButton);
+
+        pickerButton.addEventListener('click', toggleColorPicker);
+
+        canvas.addEventListener('mousemove', (e) => {
+            if (!isPickingColor) return;
+            
+            const rect = canvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            colorInfo.style.display = 'block';
+            updateColorInfo(x, y);
+        });
+
+        canvas.addEventListener('mouseleave', () => {
+            colorInfo.style.display = 'none';
+        });
+
+        canvas.addEventListener('click', (e) => {
+            if (!isPickingColor) return;
+            
+            const rect = canvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const color = getColorAtPoint(x, y);
+            const hex = rgbToHex(color.r, color.g, color.b);
+            
+            pickedColors.push(color);
+            updatePickedColorsPanel();
+        });
+
+        function updatePickedColorsPanel() {
+            pickedColorsPanel.innerHTML = '<h4 style="margin-bottom: 10px; color: #31A8FF;">Colores Seleccionados</h4>';
+            pickedColors.forEach((color, index) => {
+                const hex = rgbToHex(color.r, color.g, color.b);
+                pickedColorsPanel.innerHTML += `
+                    <div style="margin-bottom: 10px; background: rgba(0,0,0,0.5); padding: 5px; border-radius: 3px;">
+                        Color ${index + 1}:
+                        <div style="width: 30px; height: 30px; background: rgb(${color.r},${color.g},${color.b}); 
+                                    border: 1px solid white; margin: 5px auto;"></div>
+                        RGB: ${color.r}, ${color.g}, ${color.b}<br>
+                        HEX: ${hex}
+                    </div>
+                `;
+            });
+        }
+
+        // Add image loading functionality
+        setupImageInput('extractorImageInput', function(img) {
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+            pickedColors = []; // Reset picked colors when new image is loaded
+            updatePickedColorsPanel();
+        });
+    }
+
+    // Call this function when the document is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+        setupColorExtractor();
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        function getElement(id) {
+            const element = document.getElementById(id);
+            if (!element) {
+                console.warn(`Element with id ${id} not found`);
+            }
+            return element;
+        }
+
+        function showSection(sectionId) {
+            document.querySelectorAll('.section-overlay').forEach(section => {
+                section.style.display = 'none';
+            });
+            
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.style.display = 'flex';
+            }
+        }
+
+        function addShowSectionListeners() {
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const sectionId = link.getAttribute('href').substring(1);
+                    showSection(sectionId);
+                });
+            });
+            
+            document.querySelectorAll('.feature-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    const sectionId = card.dataset.section;
+                    showSection(sectionId);
+                });
+            });
+        }
+
+        setupImageInput('histogramImageInput', function(img) {
+            const canvas = getElement('histogramCanvas');
+            if (canvas) {
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                createHistogram(imageData);
+            }
+        });
+
+        setupImageInput('colorSpaceImageInput', function(img) {
+            const canvas = getElement('intensityCanvas');
+            if (canvas) {
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                const imageData = ctx.getImageData(0, 0, canvas.height, canvas.height);
+                createIntensityGraph(imageData);
+            }
+        });
+
+        setupImageInput('paletteImageInput', function(img) {
+            createScatterPlot(img);
+        });
+
+        const scatterCanvas = getElement('scatterCanvas');
+        if (scatterCanvas) {
+            try {
+                // Initialization of scatter plotting or related graphs if needed
+            } catch (error) {
+                console.error('Error initializing scatter plot:', error);
+            }
+        }
+
+        setupContrastInput();
+
+        document.querySelectorAll('.close-button').forEach(button => {
+            button.addEventListener('click', () => {
+                button.closest('.section-overlay').style.display = 'none';
+            });
+        });
+
+        document.querySelectorAll('.section-overlay').forEach(overlay => {
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) {
+                    overlay.style.display = 'none';
+                }
+            });
+        });
+
+        addShowSectionListeners();
+    });
+
+    function createScatterPlot(img) {
+        const canvas = document.getElementById('scatterCanvas');
+        if (!canvas) return;
+        
+        const containerWidth = canvas.parentElement.clientWidth;
+        canvas.width = Math.min(window.innerWidth * 0.8, containerWidth);
+        canvas.height = Math.min(800, window.innerHeight * 0.7);
+
+        canvas.style.display = 'block';
+        canvas.style.margin = '0 auto';
+        canvas.style.maxWidth = '100%';
+
+        const tempCanvas = document.createElement('canvas');
+        const tempCtx = tempCanvas.getContext('2d');
+        tempCanvas.width = img.width;
+        tempCanvas.height = img.height;
+        tempCtx.drawImage(img, 0, 0);
+        const imageData = tempCtx.getImageData(0, 0, tempCanvas.width, tempCanvas.height);
+        const pixels = imageData.data;
+
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(60, canvas.width / canvas.height, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true });
+        renderer.setSize(canvas.width, canvas.height);
+        renderer.setClearColor(0x000000);
+
+        window.addEventListener('resize', () => {
+            const containerWidth = canvas.parentElement.clientWidth;
+            canvas.width = Math.min(window.innerWidth * 0.8, containerWidth);
+            canvas.height = Math.min(800, window.innerHeight * 0.7);
+            renderer.setSize(canvas.width, canvas.height);
+            camera.aspect = canvas.width / canvas.height;
+            camera.updateProjectionMatrix();
+        });
+
+        const cubeGeometry = new THREE.BoxGeometry(256, 256, 256);
+        const edges = new THREE.EdgesGeometry(cubeGeometry);
+        const cube = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0xffffff }));
+        scene.add(cube);
+
+        const geometry = new THREE.BufferGeometry();
+        const positions = [];
+        const colors = [];
+
+        for (let i = 0; i < pixels.length; i += 4) {
+            const r = pixels[i];
+            const g = pixels[i + 1];
+            const b = pixels[i + 2];
+            
+            positions.push(
+                r - 128,
+                g - 128,
+                b - 128
+            );
+
+            colors.push(
+                r / 255,
+                g / 255,
+                b / 255
+            );
+        }
+
+        geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+        geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+
+        const pointsMaterial = new THREE.PointsMaterial({
+            size: 2,
+            vertexColors: true,
+            transparent: true,
+            opacity: 0.6
+        });
+
+        const points = new THREE.Points(geometry, pointsMaterial);
+        scene.add(points);
+
+        camera.position.set(200, 200, 200);
+        camera.lookAt(0, 0, 0);
+
+        const controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.25;
+        controls.screenSpacePanning = false;
+
+        function animate() {
+            requestAnimationFrame(animate);
+            controls.update();
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        canvas.userData = { scene: scene };
+
+        const addLabel = (text, position) => {
+            const div = document.createElement('div');
+            div.className = 'axis-label';
+            div.textContent = text;
+            div.style.position = 'absolute';
+            div.style.color = 'white';
+            div.style.padding = '5px';
+            div.style.backgroundColor = 'rgba(0,0,0,0.7)';
+            div.style.borderRadius = '3px';
+            div.style.left = position.x + 'px';
+            div.style.top = position.y + 'px';
+            canvas.parentElement.appendChild(div);
+        };
+
+        addLabel('R', { x: canvas.width - 30, y: canvas.height/2 });
+        addLabel('G', { x: canvas.width/2, y: canvas.height - 30 });
+        addLabel('B', { x: 10, y: canvas.height/2 });
+
+        canvas.addEventListener('mousemove', (event) => {
+            if (event.buttons === 1) {
+                rotation = event.movementX * 0.01;
+                cube.rotation.y += rotation;
+                points.rotation.y += rotation;
+                cube.rotation.x += event.movementY * 0.01;
+                points.rotation.x += event.movementY * 0.01;
+            }
+        });
+    }
+
+    function downloadScatterPNG() {
+        const canvas = document.getElementById('scatterCanvas');
+        if (!canvas) return;
+        
+        const link = document.createElement('a');
+        link.download = 'scatter_plot.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+    }
+
+    function downloadScatterCSV() {
+        const canvas = document.getElementById('scatterCanvas');
+        if (!canvas) return;
+        
+        const scene = canvas.userData?.scene;
+        if (!scene) return;
+        
+        const points = scene.children.find(child => child instanceof THREE.Points);
+        if (!points) return;
+        
+        const positions = points.geometry.attributes.position.array;
+        const colors = points.geometry.attributes.color.array;
+        
+        let csv = 'R,G,B\n';
+        
+        for (let i = 0; i < positions.length; i += 3) {
+            const r = Math.round(positions[i] + 128);
+            const g = Math.round(positions[i + 1] + 128);
+            const b = Math.round(positions[i + 2] + 128);
+            
+            const validR = Math.max(0, Math.min(255, r));
+            const validG = Math.max(0, Math.min(255, g));
+            const validB = Math.max(0, Math.min(255, b));
+            
+            csv += `${validR},${validG},${validB}\n`;
+        }
+        
+        const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = 'scatter_plot_data.csv';
+        link.click();
+    }
+</script>
+<script src="https://unpkg.com/three@0.128.0/build/three.min.js"></script>
+<script src="https://unpkg.com/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+</head><body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="3D_Animation_Style_a_3d_rgb_cube_with_its_hands_and_mouths_and_0.jpg" 
+                 alt="3D rainbow cube with cartoon characters" 
+                 width="40" 
+                 height="40" 
+                 style="border-radius: 5px; object-fit: cover;">
+            <h1>Llimpi</h1>
+        </div>
+        <div class="nav-links">
+            <a href="#productos">Productos</a>
+            <a href="#caracteristicas">Características</a>
+            <a href="#precios">Precios</a>
+            <a href="#tutoriales">Tutoriales</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1 class="floating-element">Imagina. Crea. Edita.</h1>
+        <p>El software de edición de imágenes y diseño más potente del mundo</p>
+        <a href="https://example.com/trial" class="cta-button">Prueba Gratuita</a>
+    </section>
+
+    <section class="features">
+        <div class="feature-card" data-section="ia">
+            <i class="fas fa-magic"></i>
+            <h3>Herramientas IA</h3>
+            <p>Potencia tu creatividad con herramientas impulsadas por Inteligencia Artificial</p>
+        </div>
+        <div class="feature-card" data-section="caracterizacion-color">
+            <i class="fas fa-palette"></i>
+            <h3>Caracterización del Color</h3>
+            <p>Análisis y caracterización avanzada del color</p>
+        </div>
+        <div class="feature-card" data-section="obtencion-color">
+            <i class="fas fa-eye-dropper"></i>
+            <h3>Obtención de Color</h3>
+            <p>Herramientas avanzadas para extraer y analizar colores</p>
+        </div>
+    </section>
+
+    <section class="workspace-preview">
+        <h2>Espacio de trabajo profesional</h2>
+        <div class="workspace-container">
+            <div class="tools-panel">
+                <div class="tool-icon"><i class="fas fa-crop"></i></div>
+                <div class="tool-icon"><i class="fas fa-magic"></i></div>
+                <div class="tool-icon"><i class="fas fa-paint-brush"></i></div>
+                <div class="tool-icon"><i class="fas fa-eraser"></i></div>
+                <div class="tool-icon"><i class="fas fa-fill-drip"></i></div>
+                <div class="tool-icon"><i class="fas fa-pen"></i></div>
+            </div>
+        </div>
+    </section>
+
+    <div id="productos" class="section-overlay">
+        <div class="section-content">
+            <button class="close-button"><i class="fas fa-times"></i></button>
+            <h2>Productos Llimpi</h2>
+            <div class="product-list">
+                <div class="product-card">
+                    <h3>Llimpi</h3>
+                    <p>Edición y composición de imágenes</p>
+                </div>
+                <div class="product-card">
+                    <h3>Lightroom</h3>
+                    <p>Edición y organización de fotos</p>
+                </div>
+                <div class="product-card">
+                    <h3>Illustrator</h3>
+                    <p>Diseño vectorial y ilustración</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="caracteristicas" class="section-overlay">
+        <div class="section-content">
+            <button class="close-button"><i class="fas fa-times"></i></button>
+            <h2>Características</h2>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <h3>Selección por IA</h3>
+                    <p>Selecciona objetos con un solo clic</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Neural Filters</h3>
+                    <p>Efectos y ajustes impulsados por IA</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Content-Aware Fill</h3>
+                    <p>Relleno inteligente de contenido</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="precios" class="section-overlay">
+        <div class="section-content">
+            <button class="close-button"><i class="fas fa-times"></i></button>
+            <h2>Planes y Precios</h2>
+            <div class="pricing-plans">
+                <div class="plan-card">
+                    <h3>Individual</h3>
+                    <div class="price">$20.99/mes</div>
+                    <p>Plan básico para fotógrafos</p>
+                </div>
+                <div class="plan-card">
+                    <h3>Business</h3>
+                    <div class="price">$33.99/mes</div>
+                    <p>Para equipos y empresas</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="tutoriales" class="section-overlay">
+        <div class="section-content">
+            <button class="close-button"><i class="fas fa-times"></i></button>
+            <h2>Tutoriales</h2>
+            <div class="tutorial-list">
+                <div class="tutorial-card">
+                    <h3>Básicos de Llimpi</h3>
+                    <p>Aprende las herramientas fundamentales</p>
+                </div>
+                <div class="tutorial-card">
+                    <h3>Retoque Profesional</h3>
+                    <p>Técnicas avanzadas de retoque</p>
+                </div>
+                <div class="tutorial-card">
+                    <h3>Efectos Especiales</h3>
+                    <p>Crea efectos visuales impactantes</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="ia" class="section-overlay">
+        <div class="section-content">
+            <button class="close-button"><i class="fas fa-times"></i></button>
+            <h2>Herramientas IA</h2>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <h3><i class="fas fa-magic"></i> Selección Inteligente</h3>
+                    <p>Selecciona objetos y sujetos automáticamente con un solo clic usando nuestra avanzada IA</p>
+                    <canvas id="selectionCanvas" width="600" height="700"></canvas>
+                    <input type="file" id="selectionImageInput" accept="image/*" style="display: none">
+                    <div class="button-group">
+                        <button class="upload-button" onclick="document.getElementById('selectionImageInput').click()">
+                            <i class="fas fa-upload"></i> Subir Imagen
+                        </button>
+                        <button class="process-button">
+                            <i class="fas fa-wand-magic-sparkles"></i> Procesar
+                        </button>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <h3><i class="fas fa-brain"></i> Filtros Neurales</h3>
+                    <p>Aplica efectos artísticos y ajustes avanzados usando redes neuronales</p>
+                    <canvas id="filterCanvas" width="600" height="700"></canvas>
+                    <input type="file" id="filterImageInput" accept="image/*" style="display: none">
+                    <div class="button-group">
+                        <button class="upload-button" onclick="document.getElementById('filterImageInput').click()">
+                            <i class="fas fa-upload"></i> Subir Imagen
+                        </button>
+                        <button class="process-button">
+                            <i class="fas fa-palette"></i> Aplicar Filtro
+                        </button>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <h3><i class="fas fa-camera"></i> Auto-Corrección</h3>
+                    <p>Optimiza automáticamente el contraste, color y nitidez de tus imágenes</p>
+                    <canvas id="correctionCanvas" width="600" height="700"></canvas>
+                    <input type="file" id="correctionImageInput" accept="image/*" style="display: none">
+                    <div class="button-group">
+                        <button class="upload-button" onclick="document.getElementById('correctionImageInput').click()">
+                            <i class="fas fa-upload"></i> Subir Imagen
+                        </button>
+                        <button class="process-button">
+                            <i class="fas fa-sliders"></i> Auto-Corregir
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="caracterizacion-color" class="section-overlay">
+        <div class="section-content">
+            <button class="close-button"><i class="fas fa-times"></i></button>
+            <h2>Caracterización del Color</h2>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <h3><i class="fas fa-chart-bar"></i> Histograma RGB</h3>
+                    <p>Analiza la distribución de colores en el espacio RGB mediante histogramas interactivos</p>
+                    <canvas id="histogramCanvas" width="600" height="700"></canvas>
+                    <input type="file" id="histogramImageInput" accept="image/*" style="display: none">
+                    <div class="button-group">
+                        <button class="upload-button" onclick="document.getElementById('histogramImageInput').click()">
+                            <i class="fas fa-upload"></i> Subir Imagen
+                        </button>
+                        <button class="download-button" onclick="downloadHistogramPNG()">
+                            <i class="fas fa-download"></i> Descargar PNG
+                        </button>
+                        <button class="download-button" onclick="downloadHistogramCSV()">
+                            <i class="fas fa-file-csv"></i> Descargar CSV
+                        </button>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <h3><i class="fas fa-cube"></i> Intensidad del Color</h3>
+                    <p>Analiza y visualiza la intensidad de los colores en la imagen</p>
+                    <canvas id="intensityCanvas" width="600" height="700"></canvas>
+                    <input type="file" id="colorSpaceImageInput" accept="image/*" style="display: none">
+                    <div class="button-group">
+                        <button class="upload-button" onclick="document.getElementById('colorSpaceImageInput').click()">
+                            <i class="fas fa-upload"></i> Subir Imagen
+                        </button>
+                        <button class="download-button" onclick="downloadIntensityPNG()">
+                            <i class="fas fa-download"></i> Descargar PNG
+                        </button>
+                        <button class="download-button" onclick="downloadIntensityCSV()">
+                            <i class="fas fa-file-csv"></i> Descargar CSV
+                        </button>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <h3><i class="fas fa-palette"></i> Gráfico de Dispersión del Color</h3>
+                    <p>Analiza la distribución espacial de los colores en la imagen</p>
+                    <canvas id="scatterCanvas" width="600" height="800"></canvas>
+                    <input type="file" id="paletteImageInput" accept="image/*" style="display: none">
+                    <div class="button-group">
+                        <button class="upload-button" onclick="document.getElementById('paletteImageInput').click()">
+                            <i class="fas fa-upload"></i> Subir Imagen
+                        </button>
+                        <button class="download-button" onclick="downloadScatterPNG()">
+                            <i class="fas fa-download"></i> Descargar PNG
+                        </button>
+                        <button class="download-button" onclick="downloadScatterCSV()">
+                            <i class="fas fa-file-csv"></i> Descargar CSV
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="obtencion de color" class="section-overlay">
+        <div class="section-content">
+            <button class="close-button"><i class="fas fa-times"></i></button>
+            <h2>Obtención de Color</h2>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <h3><i class="fas fa-eye-dropper"></i> Extractor de Colores</h3>
+                    <p>Extrae los colores dominantes de la imagen y genera una paleta personalizada</p>
+                    <canvas id="extractorCanvas" width="600" height="700" style="background: #000000; border: 1px solid #444;"></canvas>
+                    <input type="file" id="extractorImageInput" accept="image/*" style="display: none">
+                    <div class="button-group">
+                        <button class="upload-button" onclick="document.getElementById('extractorImageInput').click()">
+                            <i class="fas fa-upload"></i> Subir Imagen
+                        </button>
+                        <button class="download-button" onclick="downloadExtractorPNG()">
+                            <i class="fas fa-download"></i> Descargar PNG
+                        </button>
+                        <button class="download-button" onclick="downloadExtractorCSV()">
+                            <i class="fas fa-file-csv"></i> Descargar CSV
+                        </button>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <h3><i class="fas fa-adjust"></i> Análisis de Contraste</h3>
+                    <p>Analiza los niveles de contraste y armonía entre colores</p>
+                    <canvas id="contrastCanvas" width="600" height="700"></canvas>
+                    <input type="file" id="contrastImageInput" accept="image/*" style="display: none">
+                    <div class="button-group">
+                        <button class="upload-button" onclick="document.getElementById('contrastImageInput').click()">
+                            <i class="fas fa-upload"></i> Subir Imagen
+                        </button>
+                        <button class="download-button" onclick="downloadContrastPNG()">
+                            <i class="fas fa-download"></i> Descargar PNG
+                        </button>
+                        <button class="download-button" onclick="downloadContrastCSV()">
+                            <i class="fas fa-file-csv"></i> Descargar CSV
+                        </button>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <h3><i class="fas fa-swatchbook"></i> Paletas de Color</h3>
+                    <p>Genera y analiza paletas de color armónicas basadas en la imagen</p>
+                    <canvas id="paletteGenCanvas" width="600" height="700"></canvas>
+                    <input type="file" id="paletteGenImageInput" accept="image/*" style="display: none">
+                    <div class="button-group">
+                        <button class="upload-button" onclick="document.getElementById('paletteGenImageInput').click()">
+                            <i class="fas fa-upload"></i> Subir Imagen
+                        </button>
+                        <button class="download-button" onclick="downloadPaletteGenPNG()">
+                            <i class="fas fa-download"></i> Descargar PNG
+                        </button>
+                        <button class="download-button" onclick="downloadPaletteGenCSV()">
+                            <i class="fas fa-file-csv"></i> Descargar CSV
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body></html>  
